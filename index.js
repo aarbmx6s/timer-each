@@ -6,7 +6,7 @@
  * @returns {Number} timeout id
  */
 function timeoutEachShift(cb, interval, shift, ...args) {
-    const d = Math.floor(interval - Date.now() % interval) + shift;
+    const d = Math.floor(interval - (Date.now() - shift) % interval);
     const tid = setTimeout.apply(setTimeout, [cb, d].concat(args || []));
     return tid;
 }
